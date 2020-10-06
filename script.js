@@ -47,14 +47,12 @@ function renderStickers(list) {
 function onFormSubmit(e) {
   e.preventDefault();
   submitForm();
-  console.log("submited");
 }
 
 function submitForm() {
   const stickerObj = {
     description: "",
   };
-  console.log("submited");
   addSticker(stickerObj).then(getStickers);
 }
 
@@ -91,5 +89,7 @@ function updateNote(target) {
       "Content-Type": "application/json",
     },
     body: JSON.stringify(stickerObj),
-  }).then(getStickers);
+  })
+    .then(getStickers)
+    .catch((error) => console.error("Error occured in updateNote: ", error));
 }
